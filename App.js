@@ -21,16 +21,23 @@ export default function App() {
         {/* Profile Picture */}
         <Image
           style={themeStyles.profileImage}
-          source={require('./assets/image.png')} 
+          source={require('./assets/image.png')}
         />
 
         {/* User's Name */}
         <Text style={themeStyles.userName}>Arriane Dadang</Text>
 
-        {/* Edit Profile Button */}
-        <TouchableOpacity style={themeStyles.editButton}>
-          <Text style={themeStyles.editButtonText}>Edit Profile</Text>
-        </TouchableOpacity>
+        {/* Profile Section */}
+        <View style={themeStyles.optionsContainer}>
+          <Text style={themeStyles.heading}>Profile</Text>
+          <TouchableOpacity style={themeStyles.option}>
+            <Text style={themeStyles.optionText}>Manage User</Text>
+            <Ionicons name="person-outline" size={24} color={isDarkMode ? '#fff' : '#000'} />
+          </TouchableOpacity>
+        </View>
+
+        {/* Settings Section */}
+        <Text style={[themeStyles.heading, themeStyles.settingsHeading]}>Settings</Text>
 
         {/* Settings Options */}
         <View style={themeStyles.optionsContainer}>
@@ -40,15 +47,9 @@ export default function App() {
             <Ionicons name="notifications-outline" size={24} color={isDarkMode ? '#fff' : '#000'} />
           </TouchableOpacity>
 
-          {/* Settings */}
+          {/* Privacy and Policy */}
           <TouchableOpacity style={themeStyles.option}>
-            <Text style={themeStyles.optionText}>Settings</Text>
-            <Ionicons name="settings-outline" size={24} color={isDarkMode ? '#fff' : '#000'} />
-          </TouchableOpacity>
-
-          {/* Privacy */}
-          <TouchableOpacity style={themeStyles.option}>
-            <Text style={themeStyles.optionText}>Privacy</Text>
+            <Text style={themeStyles.optionText}>Privacy and Policy</Text>
             <Ionicons name="shield-outline" size={24} color={isDarkMode ? '#fff' : '#000'} />
           </TouchableOpacity>
 
@@ -62,6 +63,12 @@ export default function App() {
               value={isDarkMode}
             />
           </View>
+
+          {/* Sign Out */}
+          <TouchableOpacity style={themeStyles.option}>
+            <Text style={[themeStyles.optionText, themeStyles.signOut]}>Sign Out</Text>
+            <Ionicons name="log-out-outline" size={24} color={isDarkMode ? '#fff' : '#000'} />
+          </TouchableOpacity>
         </View>
       </ScrollView>
 
@@ -107,25 +114,25 @@ const lightStyles = StyleSheet.create({
     marginBottom: 10,
     color: '#333',
   },
-  editButton: {
-    backgroundColor: '#6A5ACD',
-    borderRadius: 10,
-    padding: 12,
-    marginBottom: 20,
-    shadowColor: '#000',
-    shadowOpacity: 0.2,
-    shadowRadius: 5,
-    elevation: 5,
-  },
-  editButtonText: {
-    color: '#fff',
+  heading: {
+    fontSize: 22,
     fontWeight: 'bold',
-    fontSize: 16,
+    marginBottom: 2,
+    marginTop: 15,
+    color: '#333',
+    textAlign: 'left', 
+    width: '100%',
+    paddingLeft: 0, 
+  },
+  settingsHeading: {
+    marginTop: 30, 
+    marginBottom: 2,
+    paddingLeft: 15,
   },
   optionsContainer: {
     width: '100%',
     paddingHorizontal: 20,
-    marginTop: 20,
+    marginTop: 5,
   },
   option: {
     flexDirection: 'row',
@@ -138,6 +145,9 @@ const lightStyles = StyleSheet.create({
   optionText: {
     fontSize: 18,
     color: '#333',
+  },
+  signOut: {
+    color: '#ff6347',
   },
 });
 
@@ -178,25 +188,25 @@ const darkStyles = StyleSheet.create({
     marginBottom: 10,
     color: '#fff',
   },
-  editButton: {
-    backgroundColor: '#32cd32',
-    borderRadius: 10,
-    padding: 12,
-    marginBottom: 20,
-    shadowColor: '#000',
-    shadowOpacity: 0.7,
-    shadowRadius: 5,
-    elevation: 5,
-  },
-  editButtonText: {
-    color: '#fff',
+  heading: {
+    fontSize: 22,
     fontWeight: 'bold',
-    fontSize: 16,
+    marginBottom: 2,
+    marginTop: 15,
+    color: '#fff',
+    textAlign: 'left', // Aligned to the left
+    width: '100%',
+    paddingLeft: 0,
+  },
+  settingsHeading: {
+    marginTop: 30,
+    marginBottom: 2,
+    paddingLeft: 15,
   },
   optionsContainer: {
     width: '100%',
     paddingHorizontal: 20,
-    marginTop: 20,
+    marginTop: 10,
   },
   option: {
     flexDirection: 'row',
@@ -209,5 +219,8 @@ const darkStyles = StyleSheet.create({
   optionText: {
     fontSize: 18,
     color: '#fff',
+  },
+  signOut: {
+    color: '#ff6347',
   },
 });
